@@ -11,9 +11,14 @@
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <header>
-
-        </header>
+        <nav>
+            <div class="nav-wrapper">
+              <a href="#" class="yellow-text blue accent-4 brand-logo center">Poke Price Checker</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="collapsible.html" class="yellow-text blue accent-4">Saved Cards</a></li>
+              </ul>
+            </div>
+          </nav>
         <div class=container>
             <form id=pokemon>
                 <p>
@@ -24,7 +29,7 @@
                 </div>
             </form>
          <div class="form-group row">
-             <select class='gen-dropdown-trigger btn'>
+             <select class= "browser-default" id="generation-search">
                 <option value="" disabled selected>Generations</option>
                 <option value="generation/1">1</option>
                 <option value="generation/2">2</option>
@@ -37,7 +42,7 @@
              
          </div>
          <div class="form-group row">
-            <select class="type-dropdown-trigger btn">
+            <select class= "browser-default" id="type-search">
               <option value="" disabled selected>Types</option>
               <option value="type/6">Bug</option>
               <option value="type/16">Dark</option>
@@ -60,7 +65,7 @@
               <option value="type/18">Unknown</option>
               <option value="type/10">Water</option>
             </select>  
-         <div class="search Btn">
+         <div class="browser-default" id="search-button">
              <a href="search.html">Search</a>
          </div>
 
