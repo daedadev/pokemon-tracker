@@ -1,0 +1,53 @@
+.nav-wrapper{
+    background-image: url(images/banner.jpg);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sidenav{
+    background-color: blue;
+    color: yellow;
+}
+
+label{
+    font-size: 28px;
+    color: yellow;
+    
+}
+input{
+    text-align: center;
+    color: yellow;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    align-items: flex-start;
+}
+
+.container{
+    flex-direction: column;
+    color: white;
+    background-color: rgb(250, 43, 43);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: larger;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.gen-dropdown-trigger{
+    width: auto;
+    height:auto;
+    background-color: rgb(39, 18, 99);
+    border: solid, black;
+    border-radius: 2px;
+}
+
+.type-dropdown-trigger{
+    width: auto;
+    height:auto;
+    background-color: rgb(39, 18, 99);
+    border: solid, black;
+    border-radius: 2px;
+}
+
+
