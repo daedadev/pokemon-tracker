@@ -4,6 +4,7 @@ currentSelect = document.getElementById("pokeSelect");
 selectGeneration = document.getElementById("generation-search");
 selectType = document.getElementById("type-search");
 cardsOnPage = document.getElementsByClassName("resultsImage");
+nameSearch = document.getElementsByClassName("name-input");
 
 //Instantiate Modal
 var modal = document.getElementById("myModal");
