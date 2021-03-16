@@ -1,0 +1,20 @@
+.nav-wrapper{
+    background-image: url(images/banner.jpg);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sidenav{
+    background-color: blue;
+    color: yellow;
+}
+
+label{
+    font-size: 28px;
+    color: yellow;
+    
+}
+input{
+    text-align: center;
+    color: yellow;
+}
+
