@@ -1,7 +1,8 @@
 searchButton = document.getElementById("search-button");
 resultsContainer = document.getElementById("pokeResults");
 currentSelect = document.getElementById("pokeSelect");
-nameSearch = document.getElementById("current-search");
+selectGeneration = document.getElementById("generation-search");
+selectType = document.getElementById("type-search");
 cardsOnPage = document.getElementsByClassName("resultsImage");
 
 //Instantiate Modal
