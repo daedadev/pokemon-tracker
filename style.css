@@ -50,4 +50,12 @@ body {
     border-radius: 2px;
 }
 
+.search{
+    width: 100px;
+    height:auto;
+    background-color: rgb(39, 18, 99);
+    border: solid, black;
+    border-radius: 2px;  
+}
+
 
