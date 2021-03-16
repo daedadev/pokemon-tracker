@@ -215,7 +215,7 @@ window.onclick = function(event) {
 // Button click event that passes input info
 searchButton.addEventListener("click", function(){
 
-    parameterSelect = currentSelect.value;
+    parameterSelect = selectGeneration.value;
     searchedName = nameSearch.value;
 
     resultsContainer.innerHTML = ""
