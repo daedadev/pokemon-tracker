@@ -29,12 +29,11 @@
               <ul id="slide-out" class="sidenav sidenav-fixed">
                 <h3>Search for Pokemon cards by name , type, or generation.</h3>
                 <div class="input-field col s12">
-                    <form action="index.js">
-                        <label for="poName">Pokemon Name</label>
-                        <input type="text" id="poName" name="poName">
-                    </form>
+                    <label for="current-search">Pokemon Name</label>
+                    <input type="text" id="name-input" name="current-search">
+                    
                     <h5>Generation</h5>
-                    <select class="browser-default">
+                    <select class="browser-default" id="generation-search">
                       <option value="" disabled selected>Choose your option</option>
                       <option value="generation/1">1</option>
                       <option value="generation/2">2</option>
@@ -44,8 +43,9 @@
                       <option value="generation/6">6</option>
                       <option value="generation/7">7</option>
                     </select>
+
                     <h5>Pokemon Type</h5>
-                    <select class="browser-default">
+                    <select class="browser-default" id="type-search">
                       <option value="" disabled selected>Choose your option</option>
                       <option value="type/6">Bug</option>
                       <option value="type/16">Dark</option>
@@ -68,6 +68,7 @@
                       <option value="type/18">Unknown</option>
                       <option value="type/10">Water</option>
                     </select>
+                    <button id="search-button">search</button>
 
                   </div>
     
@@ -77,8 +78,8 @@
       
             <div class="col s12 m8 l9">
               <!-- Teal page content  -->
-              <div class="row">
-                <div class="col s1">1</div>
+              <div class="row" id="pokeResults">
+                <!-- <div class="col s1">1</div>
                 <div class="col s1">2</div>
                 <div class="col s1">3</div>
                 <div class="col s1">4</div>
@@ -89,11 +90,31 @@
                 <div class="col s1">9</div>
                 <div class="col s1">10</div>
                 <div class="col s1">11</div>
-                <div class="col s1">12</div>
+                <div class="col s1">12</div> -->
               </div>
             </div>
       
           </div>
+
+          <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1 id="modal-card-name"></h1>
+        <h1>HoloFoil Market Price</h1>
+        <h2 id="modal-HoloFoil-price"></h2>
+        <h1>reverseHolofoil Market Price</h1>
+        <h2 id="modal-reverseHolofoil-price"></h2>
+        <h1>normal Market Price</h1>
+        <h2 id="modal-normal-price"></h2>
+        <h2 id="modal-card-type"></h2>
+        <img src="" alt="" id="modal-card-image">
+      </div>
+    
+    </div>
+  
     <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="index.js"></script>

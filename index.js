@@ -1,8 +1,10 @@
 searchButton = document.getElementById("search-button");
 resultsContainer = document.getElementById("pokeResults");
 currentSelect = document.getElementById("pokeSelect");
-nameSearch = document.getElementById("current-search");
+selectGeneration = document.getElementById("generation-search");
+selectType = document.getElementById("type-search");
 cardsOnPage = document.getElementsByClassName("resultsImage");
+nameSearch = document.getElementById("name-input");
 
 //Instantiate Modal
 var modal = document.getElementById("myModal");
@@ -65,6 +67,8 @@ function searchingPokeData(parameter, name){
     }else if(name){
 
         finalURL = "https://pokeapi.co/api/v2/pokemon/" + name;
+
+        console.log(finalURL);
 
         fetch(finalURL)
         .then(function (response) {
@@ -213,8 +217,9 @@ window.onclick = function(event) {
 // Button click event that passes input info
 searchButton.addEventListener("click", function(){
 
-    parameterSelect = currentSelect.value;
+    parameterSelect = selectGeneration.value;
     searchedName = nameSearch.value;
+    searchedName = searchedName.toLowerCase()
 
     resultsContainer.innerHTML = ""
     searchingPokeData(parameterSelect, searchedName);
