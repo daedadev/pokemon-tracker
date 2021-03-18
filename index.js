@@ -6,7 +6,7 @@ selectType = document.getElementById("type-search");
 cardsOnPage = document.getElementsByClassName("resultsImage");
 nameSearch = document.getElementById("name-input");
 
-//Instantiate Modal
+//Instantiate View Card Modal
 var modal = document.getElementById("myModal");
 var modalCardName = document.getElementById("modal-card-name");
 var reverseHolofoilPrice = document.getElementById("modal-reverseHolofoil-price");
@@ -15,54 +15,74 @@ var normalPrice = document.getElementById("modal-normal-price");
 var modalCardImage = document.getElementById("modal-card-image");
 var modalCardType = document.getElementById("modal-card-type");
 
+var cardSaveBtn = document.getElementById("card-saver");
+
 // Get the <span> element that closes the modal [This is just w3Schools basic modal setup]
-var span = document.getElementsByClassName("close")[0];
+var cardDisplayClose = document.getElementsByClassName("close")[0];
+
+// Instantiate Collections Modal
+var collectionsModal = document.getElementById("collections-modal");
+var collectionsDisplayClose = document.getElementsByClassName("close")[1];
+var collectionResults = document.getElementById("collection-results");
+
+var savedCardsBtn = document.getElementById("show-saved");
 
 // Function that returns both the name and parameter search inputs
-function searchingPokeData(parameter, name){
+function searchingPokeData(theGeneration, theType, name){
 
+    // Sorted
     // Check to see if there is a parameter and no name inputed
-    if(parameter && !name){
+    if(theGeneration && theType && !name){
 
-        finalURL = "https://pokeapi.co/api/v2/" + parameter;
-
-        fetch(finalURL)
+        generationURL = "https://pokeapi.co/api/v2/" + theGeneration;
+        
+        fetch(generationURL)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
 
-            // Check if the user is searching by generation
-            if(finalURL.includes("generation")){     
+            // Returns an array of the Generation requested
+            var pokemonGenerationArray = [];
+
+            for(i=0; i<data.pokemon_species.length; i++){
                 
-                var pokemonNameArray = [];
+                pokemonGenerationArray.push(data.pokemon_species[i].name)
     
-                for(i=0; i<data.pokemon_species.length; i++){
-                    
-                    pokemonNameArray.push(data.pokemon_species[i].name)
-        
-                }
-        
-                console.log(pokemonNameArray);
-                searchingTCGData(pokemonNameArray);
             }
-
-            // Check if the user is searching by pokemon type
-            if(finalURL.includes("type")){
-
-                var pokemonNameArray = [];
     
-                for(i=0; i<data.pokemon.length; i++){
-                    
-                    pokemonNameArray.push(data.pokemon[i].pokemon.name)
-        
-                }
-        
-                console.log(pokemonNameArray);
-                searchingTCGData(pokemonNameArray);
+            // Run the array through the TCG Api 
+            console.log(pokemonGenerationArray);
+            getCardsOfType(theType, pokemonGenerationArray);
 
-            }
         });
+
+    }else if(theGeneration && !theType && !name){
+
+        generationURL = "https://pokeapi.co/api/v2/" + theGeneration;
+        
+        fetch(generationURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+
+            // Returns an array of the Generation requested
+            var pokemonGenerationArray = [];
+
+            for(i=0; i<data.pokemon_species.length; i++){
+                
+                pokemonGenerationArray.push(data.pokemon_species[i].name)
+    
+            }
+    
+            // Run the array through the TCG Api 
+            console.log(pokemonGenerationArray);
+            searchingTCGData(pokemonGenerationArray);
+
+        });
+
+    // Non Sorted
     // Check if there was a name inputed
     }else if(name){
 
@@ -84,6 +104,42 @@ function searchingPokeData(parameter, name){
     }
 }
 
+// Sorted
+// Sort the cards being taken from the tcg array by Type
+function getCardsOfType(type, genArray){
+
+    for(i=0; i < genArray.length; i++){
+
+        pokeCardURL = "https://api.pokemontcg.io/v2/cards?q=name:" + genArray[i]
+
+        fetch(pokeCardURL, {
+            method: "GET",
+            withCredentials: true,
+            headers: {
+            "X-API-KEY": "f67d2ff5-723b-4794-bbfb-6b0a4e846179",
+            "Content-Type": "application/json",
+            },
+        })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+                        
+            // Sort through per card per pokemon name
+            for(x=0; x< data.data.length; x++){
+
+                if(data.data[x].types[0] === type){
+
+                    console.log(data.data[x]);
+    
+                    postTypePokemonCardInfo(data.data[x]);
+                }
+            }
+        });
+    }
+}
+
+// Non Sorted
 // Takes the names from the PokeAPI database and runs for matches in TCG
 function searchingTCGData(pokemonData){
 
@@ -118,7 +174,7 @@ function searchingTCGData(pokemonData){
 // Sets the card id as the actual html item id
 function postPokemonCardInfo(dataTCG){
 
-    for(i=0; i<5; i++){
+    for(i=0; i<dataTCG.length; i++){
 
         console.log(dataTCG[i]);
         var cardImage = document.createElement('img');
@@ -135,8 +191,29 @@ function postPokemonCardInfo(dataTCG){
             cardClickInformation(cardID);
         
         })
-
     }
+}
+
+// Pre-Sorted version of the above function
+// Takes the TCG data and pulls individual card data
+// Sets the card id as the actual html item id
+function postTypePokemonCardInfo(dataTCG){
+
+    console.log(dataTCG);
+    var cardImage = document.createElement('img');
+    resultsContainer.appendChild(cardImage);
+    cardImage.id = dataTCG.id;
+    cardImage.setAttribute("class", "resultsImage");
+    cardImage.src = dataTCG.images.small;
+
+    cardImage.addEventListener("click", function(e){
+
+        console.log(this);
+        var cardID = this.id;
+
+        cardClickInformation(cardID);
+    
+    })
 }
 
 // Runs a search query based on the current card you clicked
@@ -163,10 +240,12 @@ function cardClickInformation(cardObject){
     });
 }
 
+// Handles information inside the Card Modal
 function cardModalInformation(modalCard){
 
     modalCardName.innerHTML = "Pokemon Card Title: "+modalCard.name;
     modalCardImage.src = modalCard.images.large;
+    cardSaveBtn.setAttribute("class", modalCard.id);
 
     if(modalCard.tcgplayer){
 
@@ -212,17 +291,93 @@ window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
+
+    if (event.target == collectionsModal) {
+        collectionsModal.style.display = "none";
+    }
   }
 
 // Button click event that passes input info
 searchButton.addEventListener("click", function(){
 
-    parameterSelect = selectGeneration.value;
+    parameterType = selectType.value;
+    parameterGeneration = selectGeneration.value;
     searchedName = nameSearch.value;
     searchedName = searchedName.toLowerCase()
 
+    console.log("Type: "+parameterType +"  Generation: "+parameterGeneration);
+    searchingPokeData(parameterGeneration, parameterType, searchedName);
+
     resultsContainer.innerHTML = ""
-    searchingPokeData(parameterSelect, searchedName);
+})
+
+// Save Card Functionality
+var collectedCards = [];
+
+cardSaveBtn.addEventListener("click", function(){
+
+    collectedCards.push(cardSaveBtn.className);
+    localStorage.setItem("ItemID", collectedCards);
+    console.log(collectedCards);
 
 })
+
+// Handle Collections Modal
+savedCardsBtn.addEventListener("click", function(){
+
+    collectionsModal.style.display = "block";
+    getSavedCards(collectedCards);
+    console.log(collectedCards);
+
+
+});
+
+// Runs a search query based on the current card you clicked
+function getSavedCards(cardObject){
+
+    for(i=0; i<cardObject.length; i++){
+
+        clickCardURL = "https://api.pokemontcg.io/v2/cards/" + cardObject[i];
+
+        fetch(clickCardURL, {
+            method: "GET",
+            withCredentials: true,
+            headers: {
+            "X-API-KEY": "f67d2ff5-723b-4794-bbfb-6b0a4e846179",
+            "Content-Type": "application/json",
+            },
+        })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+           
+            console.log(data.data);
+            postSavedCards(data.data);
+    
+        });
+
+    }
+
+}
+
+function postSavedCards(dataTCG){
+
+    console.log(dataTCG);
+    var collectionImage = document.createElement('img');
+    collectionResults.appendChild(collectionImage);
+    collectionImage.id = dataTCG.id;
+    collectionImage.setAttribute("class", "resultsImage");
+    collectionImage.src = dataTCG.images.small;
+
+    collectionImage.addEventListener("click", function(e){
+
+        console.log(this);
+        var cardID = this.id;
+
+        cardClickInformation(cardID);
+    
+    })
+}
+
 
