@@ -374,7 +374,8 @@ function postSavedCards(dataTCG){
 
         console.log(this);
         var cardID = this.id;
-
+        modal.style.display = "block";
+        collectionsModal.style.display = "none";
         cardClickInformation(cardID);
     
     })
