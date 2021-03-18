@@ -365,7 +365,7 @@ function postSavedCards(dataTCG){
 
     console.log(dataTCG);
     var collectionImage = document.createElement('img');
-    collectionResults.appendChild(collectionImage);
+    collectionResults
     collectionImage.id = dataTCG.id;
     collectionImage.setAttribute("class", "resultsImage");
     collectionImage.src = dataTCG.images.small;
