@@ -69,7 +69,7 @@
       
             <div class="col s12 m8 l9">
               <!-- Teal page content  -->
-              <div class="row" id="pokeResults">
+              <div class="row" class="responsive-img" id="pokeResults">
                 <!-- <div class="col s1">1</div>
                 <div class="col s1">2</div>
                 <div class="col s1">3</div>
@@ -93,16 +93,37 @@
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
-        <h1 id="modal-card-name"></h1>
-        <h1>HoloFoil Market Price</h1>
-        <h2 id="modal-HoloFoil-price"></h2>
-        <h1>reverseHolofoil Market Price</h1>
-        <h2 id="modal-reverseHolofoil-price"></h2>
-        <h1>normal Market Price</h1>
-        <h2 id="modal-normal-price"></h2>
-        <h2 id="modal-card-type"></h2>
-        <img src="" alt="" id="modal-card-image">
-        <button id="card-saver">Save Card</button>
+
+        
+            
+            <h4 id="modal-card-name"></h4> <h2 id="modal-card-type"></h2>
+            
+<table class ="responsive-table highlight">
+        
+    <tbody>
+      <tr>
+        <td>Holofoil Market Price</td>
+        <td id="modal-HoloFoil-price"></td>
+      </tr>
+      <tr>
+        <td>Reverse Holofoil Market Price</td>
+        <td id="modal-reverseHolofoil-price"></td>
+        
+      </tr>
+      <tr>
+        <td>Normal Market Price</td>
+        <td id="modal-normal-price"></td>
+        
+      </tr>
+    </tbody>
+  </table>
+         
+    <img class="responsive-img" src="" alt="" id="modal-card-image">
+              
+           
+
+       
+       <button id="card-saver">Save Card</button>
       </div>
     
     </div>
@@ -130,9 +151,8 @@
             <div class="col s1">12</div> -->
           </div>
         </div>
+
       </div>
-    
-    </div>
   
     <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
