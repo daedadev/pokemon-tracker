@@ -27,11 +27,24 @@ var collectionResults = document.getElementById("collection-results");
 
 var savedCardsBtn = document.getElementById("show-saved");
 
+// Saved Cards Array
+var collectedCards = [];
+
+
+var savedCollectedCards = localStorage.getItem("ItemID");
+
+if(savedCollectedCards !== null){
+
+    collectedCards = JSON.parse(savedCollectedCards);
+
+}
+
+
 // Function that returns both the name and parameter search inputs
 function searchingPokeData(theGeneration, theType, name){
 
     // Sorted
-    // Check to see if there is a parameter and no name inputed
+    // Check to see if there is a type and generation being searched
     if(theGeneration && theType && !name){
 
         generationURL = "https://pokeapi.co/api/v2/" + theGeneration;
@@ -57,6 +70,8 @@ function searchingPokeData(theGeneration, theType, name){
 
         });
 
+    // Sorted
+    // Check to see if there is only a generation being searched
     }else if(theGeneration && !theType && !name){
 
         generationURL = "https://pokeapi.co/api/v2/" + theGeneration;
@@ -79,6 +94,24 @@ function searchingPokeData(theGeneration, theType, name){
             // Run the array through the TCG Api 
             console.log(pokemonGenerationArray);
             searchingTCGData(pokemonGenerationArray);
+
+        });
+    
+    // Sorted
+    // Check to see if there is only a type being searched
+    }else if(theType && !theGeneration && !name){
+
+        typeCardURL = "https://api.pokemontcg.io/v2/cards?q=types:" + theType;
+        
+        fetch(typeCardURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+
+            console.log(data);
+    
+            postPokemonCardInfo(data.data);
 
         });
 
@@ -312,12 +345,10 @@ searchButton.addEventListener("click", function(){
 })
 
 // Save Card Functionality
-var collectedCards = [];
-
 cardSaveBtn.addEventListener("click", function(){
 
     collectedCards.push(cardSaveBtn.className);
-    localStorage.setItem("ItemID", collectedCards);
+    localStorage.setItem("ItemID", JSON.stringify(collectedCards));
     console.log(collectedCards);
 
 })
@@ -329,11 +360,12 @@ savedCardsBtn.addEventListener("click", function(){
     getSavedCards(collectedCards);
     console.log(collectedCards);
 
-
 });
 
 // Runs a search query based on the current card you clicked
 function getSavedCards(cardObject){
+
+    collectionResults.innerHTML = "";
 
     for(i=0; i<cardObject.length; i++){
 
