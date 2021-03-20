@@ -378,12 +378,12 @@ savedCardsBtn.addEventListener("click", function(){
     getSavedCards(collectedCards);
     console.log(collectedCards);
 
+
 });
 
 // Runs a search query based on the current card you clicked
 function getSavedCards(cardObject){
 
-    collectionResults.innerHTML = "";
 
     for(i=0; i<cardObject.length; i++){
 
@@ -431,6 +431,7 @@ function postSavedCards(dataTCG){
     })
 }
 
+
 cardDisplayClose.addEventListener("click", function(){
 
     modal.style.display = "none";
@@ -444,5 +445,6 @@ collectionsDisplayClose.addEventListener("click", function(){
 })
 
 startPageSearch();
+
 
 
