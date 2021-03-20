@@ -13,9 +13,9 @@
     
       <nav>
         <div class="nav-wrapper">
-          <a href="#" class="yellow-text blue accent-4 brand-logo center">Poke Price Checker</a>
+          <h2 class="yellow-text brand-logo center">Poke Price Checker</h2>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="collapsible.html" class="yellow-text blue accent-4">Saved Cards</a></li>
+            <li><button id="show-saved"><img src="images/Pcard.jpg" alt=""></button></li>
           </ul>
         </div>
       </nav>
@@ -27,8 +27,9 @@
               <!-- Grey navigation panel -->
               
               <ul id="slide-out" class="sidenav sidenav-fixed">
+                <br></br><br></br><br></br><br></br>
                 <h3>Search for Pokemon cards by name , type, or generation.</h3>
-                <div class="input-field col s12">
+                <div class="input-field col s12" id="sidenav-style">
                     <label for="current-search">Pokemon Name</label>
                     <input type="text" id="name-input" name="current-search">
                     
@@ -79,18 +80,7 @@
             <div class="col s12 m8 l9">
               <!-- Teal page content  -->
               <div class="row" class="responsive-img" id="pokeResults">
-                <!-- <div class="col s1">1</div>
-                <div class="col s1">2</div>
-                <div class="col s1">3</div>
-                <div class="col s1">4</div>
-                <div class="col s1">5</div>
-                <div class="col s1">6</div>
-                <div class="col s1">7</div>
-                <div class="col s1">8</div>
-                <div class="col s1">9</div>
-                <div class="col s1">10</div>
-                <div class="col s1">11</div>
-                <div class="col s1">12</div> -->
+               
               </div>
             </div>
       
@@ -129,6 +119,26 @@
     <img class="responsive-img" src="" alt="" id="modal-card-image">
               
            
+
+       
+       <button id="card-saver" > <img class="responsive-img" src=images/Pball.jpg></button>
+      </div>
+    
+    </div>
+
+    <!-- The Modal -->
+    <div id="collections-modal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="col s12 m8 l9">
+          
+          <div class="row" id="collection-results">
+            
+          </div>
+        </div>
+
       </div>
   
     <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>

@@ -1,11 +1,29 @@
+
+@font-face {
+    font-family: pokeFont;
+    src: url(images/Pokemon\ Solid.ttf);
+  }
+  
+  
+
 .nav-wrapper{
     background-image: url(images/banner.jpg);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: pokeFont;
+}
+
+button{
+    padding: 0px;
+    background-color: rgba(0,0,0,0.5);
 }
 
 .sidenav{
-    background-color: blue;
-    color: yellow;
+    background-image: url(images/pokedex.jpg);
+    background-size: cover;
+    color:black;
+}
+
+#sidenav-style{
+    
 }
 
 label{
@@ -23,7 +41,13 @@ body {
     width:100%;
     margin: 0;
     align-items: flex-start;
+    background-image: url(images/Pbackground.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
+
+
 
 .container{
     flex-direction: row;
@@ -85,10 +109,40 @@ body {
     width: fit-content;
     height: fit-content;
   }
+
+  #collections-modal{      
+      position: fixed;
+      left: 400px;
+      top: 125px;
+      width: 50%;
+  }
+
+
+  #collections-modal .modal-content{
+      background-image: url(images/modalbground.jpg);
+      background-size: cover;
+      height: -webkit-fill-available;
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+  }
+
+  #collections-modal img{
+    padding: 10px;
+    height: 300px;
+  }
+
 .modal-content img{
     height: 385px;
     justify-content: center;
 }
+
+.modal-content button img{
+    height: 30px;
+    border-radius: 45px;
+}
+
+
 
 #pokeResults img{
   padding: 10px;

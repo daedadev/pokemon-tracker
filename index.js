@@ -226,3 +226,63 @@ searchButton.addEventListener("click", function(){
 
 })
 
+// Handle Collections Modal
+savedCardsBtn.addEventListener("click", function(){
+
+    collectionsModal.style.display = "block";
+    getSavedCards(collectedCards);
+    console.log(collectedCards);
+
+
+});
+
+// Runs a search query based on the current card you clicked
+function getSavedCards(cardObject){
+
+    for(i=0; i<cardObject.length; i++){
+
+        clickCardURL = "https://api.pokemontcg.io/v2/cards/" + cardObject[i];
+
+        fetch(clickCardURL, {
+            method: "GET",
+            withCredentials: true,
+            headers: {
+            "X-API-KEY": "f67d2ff5-723b-4794-bbfb-6b0a4e846179",
+            "Content-Type": "application/json",
+            },
+        })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+           
+            console.log(data.data);
+            postSavedCards(data.data);
+    
+        });
+
+    }
+
+}
+
+function postSavedCards(dataTCG){
+
+    console.log(dataTCG);
+    var collectionImage = document.createElement('img');
+    collectionResults.appendChild(collectionImage);
+    collectionImage.id = dataTCG.id;
+    collectionImage.setAttribute("class", "resultsImage");
+    collectionImage.src = dataTCG.images.small;
+
+    collectionImage.addEventListener("click", function(e){
+
+        console.log(this);
+        var cardID = this.id;
+        modal.style.display = "block";
+        collectionsModal.style.display = "none";
+        cardClickInformation(cardID);
+    
+    })
+}
+
+
