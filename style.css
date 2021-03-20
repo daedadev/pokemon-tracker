@@ -9,8 +9,10 @@
 .nav-wrapper{
     background-image: url(images/banner.jpg);
     font-family: pokeFont;
+ assets
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
+
 }
 
 button{
@@ -137,6 +139,7 @@ body {
     border: 1px solid #888;
     width: fit-content;
     height: fit-content;
+
   }
 
   #collections-modal{      
@@ -145,6 +148,8 @@ body {
       top: 125px;
       width: 50%;
   }
+
+
 
 
   #collections-modal .modal-content{
