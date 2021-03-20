@@ -1,11 +1,31 @@
+
+@font-face {
+    font-family: pokeFont;
+    src: url(images/Pokemon\ Solid.ttf);
+  }
+  
+  
+
 .nav-wrapper{
     background-image: url(images/banner.jpg);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: pokeFont;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+}
+
+button{
+    padding: 0px;
+    background-color: rgba(0,0,0,0.5);
 }
 
 .sidenav{
-    background-color: blue;
-    color: yellow;
+    background-image: url(images/pokedex.jpg);
+    background-size: cover;
+    color:black;
+}
+
+#sidenav-style{
+    
 }
 
 label{
@@ -23,12 +43,18 @@ body {
     width:100%;
     margin: 0;
     align-items: flex-start;
-    background-color: rgb(20, 10, 78);
+    background-image: url(images/Pbackground.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
 }
 
+
+
 .container{
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: 50%;
     flex-direction: row;
     color: yellow;
     background-color: rgb(52, 147, 202);
@@ -49,7 +75,7 @@ body {
 #generation-search{
     width: auto;
     height:auto;
-    background-color: lightgray;
+    background-color:lightgray;
     border: solid, black;
     border-radius: 2px;
     color: black;
@@ -58,50 +84,47 @@ body {
 #type-search{
     width: auto;
     height:auto;
-    background-color:lightgray;
+    background-color: lightgray;
     border: solid, black;
     border-radius: 2px;
     color: black;
 }
 
 #search-button{
-    width: fit-content;
+    width: 75px;
     height:auto;
-    background-color:lightgray;
+    background-color: lightgray;
     border: solid, black;
-    border-radius: 2px;  
-    color: black;
+    border-radius: 2%;
 }
-
 
 #generation-search:hover{
     background-color: dimgray;
 }
 
 #type-search:hover{
-    background-color:dimgray;
+    background-color: dimgray;
 }
 
-.search-button:hover{
+#search-button:hover{
     background-color: dimgray;
-
 }
 
 .col-sm-8:hover{
     background-color: dimgray;
-
 }
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    /* padding-top: 100px; Location of the box */
     left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    top: 85px;
+    width: 25%; /* Full width */
+    height: 115%; /* Full height */
+    /* overflow: auto; Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
@@ -110,10 +133,50 @@ body {
   .modal-content {
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
+    /* padding: 20px; */
     border: 1px solid #888;
-    width: 80%;
+    width: fit-content;
+    height: fit-content;
   }
+
+  #collections-modal{      
+      position: fixed;
+      left: 400px;
+      top: 125px;
+      width: 50%;
+  }
+
+
+  #collections-modal .modal-content{
+      background-image: url(images/modalbground.jpg);
+      background-size: cover;
+      height: -webkit-fill-available;
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+  }
+
+  #collections-modal img{
+    padding: 10px;
+    height: 300px;
+  }
+
+.modal-content img{
+    height: 385px;
+    justify-content: center;
+}
+
+.modal-content button img{
+    height: 30px;
+    border-radius: 45px;
+}
+
+
+
+#pokeResults img{
+  padding: 10px;
+  height: 300px;
+}
   
   /* The Close Button */
   .close {
