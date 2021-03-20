@@ -19,10 +19,10 @@ var cardSaveBtn = document.getElementById("card-saver");
 
 // Get the <span> element that closes the modal [This is just w3Schools basic modal setup]
 var cardDisplayClose = document.getElementsByClassName("close")[0];
+var collectionsDisplayClose = document.getElementsByClassName("close")[1];
 
 // Instantiate Collections Modal
 var collectionsModal = document.getElementById("collections-modal");
-var collectionsDisplayClose = document.getElementsByClassName("close")[1];
 var collectionResults = document.getElementById("collection-results");
 
 var savedCardsBtn = document.getElementById("show-saved");
@@ -365,7 +365,7 @@ function postSavedCards(dataTCG){
 
     console.log(dataTCG);
     var collectionImage = document.createElement('img');
-    collectionResults
+    collectionResults.appendChild(collectionImage);
     collectionImage.id = dataTCG.id;
     collectionImage.setAttribute("class", "resultsImage");
     collectionImage.src = dataTCG.images.small;
@@ -380,5 +380,17 @@ function postSavedCards(dataTCG){
     
     })
 }
+
+cardDisplayClose.addEventListener("click", function(){
+
+    modal.style.display = "none";
+
+})
+
+collectionsDisplayClose.addEventListener("click", function(){
+
+    collectionsModal.style.display = "none";
+
+})
 
 
