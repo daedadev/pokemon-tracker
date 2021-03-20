@@ -19,19 +19,32 @@ var cardSaveBtn = document.getElementById("card-saver");
 
 // Get the <span> element that closes the modal [This is just w3Schools basic modal setup]
 var cardDisplayClose = document.getElementsByClassName("close")[0];
+var collectionsDisplayClose = document.getElementsByClassName("close")[1];
 
 // Instantiate Collections Modal
 var collectionsModal = document.getElementById("collections-modal");
-var collectionsDisplayClose = document.getElementsByClassName("close")[1];
 var collectionResults = document.getElementById("collection-results");
 
 var savedCardsBtn = document.getElementById("show-saved");
+
+// Saved Cards Array
+var collectedCards = [];
+
+
+var savedCollectedCards = localStorage.getItem("ItemID");
+
+if(savedCollectedCards !== null){
+
+    collectedCards = JSON.parse(savedCollectedCards);
+
+}
+
 
 // Function that returns both the name and parameter search inputs
 function searchingPokeData(theGeneration, theType, name){
 
     // Sorted
-    // Check to see if there is a parameter and no name inputed
+    // Check to see if there is a type and generation being searched
     if(theGeneration && theType && !name){
 
         generationURL = "https://pokeapi.co/api/v2/" + theGeneration;
@@ -57,6 +70,8 @@ function searchingPokeData(theGeneration, theType, name){
 
         });
 
+    // Sorted
+    // Check to see if there is only a generation being searched
     }else if(theGeneration && !theType && !name){
 
         generationURL = "https://pokeapi.co/api/v2/" + theGeneration;
@@ -79,6 +94,24 @@ function searchingPokeData(theGeneration, theType, name){
             // Run the array through the TCG Api 
             console.log(pokemonGenerationArray);
             searchingTCGData(pokemonGenerationArray);
+
+        });
+    
+    // Sorted
+    // Check to see if there is only a type being searched
+    }else if(theType && !theGeneration && !name){
+
+        typeCardURL = "https://api.pokemontcg.io/v2/cards?q=types:" + theType;
+        
+        fetch(typeCardURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+
+            console.log(data);
+    
+            postPokemonCardInfo(data.data);
 
         });
 
@@ -289,13 +322,31 @@ function cardModalInformation(modalCard){
 // Modal handling
 window.onclick = function(event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+        modal.style.display = "none";
     }
 
     if (event.target == collectionsModal) {
         collectionsModal.style.display = "none";
     }
-  }
+}
+
+// Handle the event to run a search when the page loads
+function startPageSearch(){
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    parameterType = urlParams.get('type');
+    parameterGeneration = urlParams.get('generation');
+    searchedName = urlParams.get('name');
+    searchedName = searchedName.toLowerCase()
+
+    console.log("Type: "+parameterType +"  Generation: "+parameterGeneration);
+    searchingPokeData(parameterGeneration, parameterType, searchedName);
+
+    resultsContainer.innerHTML = ""
+
+}
 
 // Button click event that passes input info
 searchButton.addEventListener("click", function(){
@@ -312,12 +363,10 @@ searchButton.addEventListener("click", function(){
 })
 
 // Save Card Functionality
-var collectedCards = [];
-
 cardSaveBtn.addEventListener("click", function(){
 
     collectedCards.push(cardSaveBtn.className);
-    localStorage.setItem("ItemID", collectedCards);
+    localStorage.setItem("ItemID", JSON.stringify(collectedCards));
     console.log(collectedCards);
 
 })
@@ -329,11 +378,12 @@ savedCardsBtn.addEventListener("click", function(){
     getSavedCards(collectedCards);
     console.log(collectedCards);
 
-
 });
 
 // Runs a search query based on the current card you clicked
 function getSavedCards(cardObject){
+
+    collectionResults.innerHTML = "";
 
     for(i=0; i<cardObject.length; i++){
 
@@ -365,7 +415,7 @@ function postSavedCards(dataTCG){
 
     console.log(dataTCG);
     var collectionImage = document.createElement('img');
-    collectionResults
+    collectionResults.appendChild(collectionImage);
     collectionImage.id = dataTCG.id;
     collectionImage.setAttribute("class", "resultsImage");
     collectionImage.src = dataTCG.images.small;
@@ -380,5 +430,19 @@ function postSavedCards(dataTCG){
     
     })
 }
+
+cardDisplayClose.addEventListener("click", function(){
+
+    modal.style.display = "none";
+
+})
+
+collectionsDisplayClose.addEventListener("click", function(){
+
+    collectionsModal.style.display = "none";
+
+})
+
+startPageSearch();
 
 
