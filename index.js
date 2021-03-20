@@ -322,13 +322,31 @@ function cardModalInformation(modalCard){
 // Modal handling
 window.onclick = function(event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+        modal.style.display = "none";
     }
 
     if (event.target == collectionsModal) {
         collectionsModal.style.display = "none";
     }
-  }
+}
+
+// Handle the event to run a search when the page loads
+function startPageSearch(){
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    parameterType = urlParams.get('type');
+    parameterGeneration = urlParams.get('generation');
+    searchedName = urlParams.get('name');
+    searchedName = searchedName.toLowerCase()
+
+    console.log("Type: "+parameterType +"  Generation: "+parameterGeneration);
+    searchingPokeData(parameterGeneration, parameterType, searchedName);
+
+    resultsContainer.innerHTML = ""
+
+}
 
 // Button click event that passes input info
 searchButton.addEventListener("click", function(){
@@ -424,5 +442,7 @@ collectionsDisplayClose.addEventListener("click", function(){
     collectionsModal.style.display = "none";
 
 })
+
+startPageSearch();
 
 
