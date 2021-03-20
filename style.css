@@ -9,6 +9,10 @@
 .nav-wrapper{
     background-image: url(images/banner.jpg);
     font-family: pokeFont;
+ assets
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
 }
 
 button{
@@ -33,7 +37,7 @@ label{
 }
 input{
     text-align: center;
-    color: yellow;
+    color: black;
 }
 
 body {
@@ -66,12 +70,14 @@ body {
 
 .col-sm-8{
     width: 25%;
+    background-color: lightgray;
+    border-radius: 10%;
 }
 
 #generation-search{
     width: auto;
     height:auto;
-    background-color: whitesmoke;
+    background-color:lightgray;
     border: solid, black;
     border-radius: 2px;
     color: black;
@@ -80,20 +86,35 @@ body {
 #type-search{
     width: auto;
     height:auto;
-    background-color: whitesmoke;
+    background-color: lightgray;
     border: solid, black;
     border-radius: 2px;
     color: black;
 }
 
-#searchButton{
+#search-button{
     width: 75px;
     height:auto;
-    background-color: rgb(39, 18, 99);
+    background-color: lightgray;
     border: solid, black;
-    border-radius: 2px;  
+    border-radius: 2%;
 }
 
+#generation-search:hover{
+    background-color: dimgray;
+}
+
+#type-search:hover{
+    background-color: dimgray;
+}
+
+#search-button:hover{
+    background-color: dimgray;
+}
+
+.col-sm-8:hover{
+    background-color: dimgray;
+}
 
 /* The Modal (background) */
 .modal {
@@ -118,6 +139,7 @@ body {
     border: 1px solid #888;
     width: fit-content;
     height: fit-content;
+
   }
 
   #collections-modal{      
@@ -126,6 +148,8 @@ body {
       top: 125px;
       width: 50%;
   }
+
+
 
 
   #collections-modal .modal-content{
