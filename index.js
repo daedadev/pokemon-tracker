@@ -39,7 +39,7 @@ var savedCollectedCards = localStorage.getItem("ItemID");
 
 if(savedCollectedCards !== null){
 
-    // collectedCards = JSON.parse(savedCollectedCards);
+    collectedCards = JSON.parse(savedCollectedCards);
 
 }
 
@@ -411,6 +411,7 @@ savedCardsBtn2.addEventListener("click", function(e){
 // Runs a search query based on the current card you clicked
 function getSavedCards(cardObject){
 
+    collectionResults.innerHTML = "";
 
     for(i=0; i<cardObject.length; i++){
 
