@@ -6,7 +6,7 @@ After searchig, users will be able to compare te prices of different cards acros
 
 The CSS framework we used was Materialize CSS
 
-*It has been deployed to GitHub Pages.
+*It has been deployed to GitHub Pages here: https://wron1.github.io/team-project/
 
 Pur project is interactive, and uses search bars, drop down menus, and buttons,
 and our UI is polished and responsive
