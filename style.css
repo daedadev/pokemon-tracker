@@ -9,8 +9,10 @@
 .nav-wrapper{
     background-image: url(images/banner.jpg);
     font-family: pokeFont;
+
     text-shadow: 4px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     
+
 }
 
 
@@ -34,6 +36,7 @@ input{
     text-align: center;
     color: black;
     font-size: 28px;
+
 }
 
 body {
@@ -94,6 +97,7 @@ body {
     background-color: lightgray;
     border: solid, black;
     border-radius: 2%;
+
 }
 
 #generation-search:hover{
@@ -107,6 +111,22 @@ body {
 #search-button:hover{
     background-color: dimgray;
 }
+
+
+}
+
+#generation-search:hover{
+    background-color: dimgray;
+}
+
+#type-search:hover{
+    background-color: dimgray;
+}
+
+#search-button:hover{
+    background-color: dimgray;
+}
+
 
 .col-sm-8:hover{
     background-color: dimgray;
