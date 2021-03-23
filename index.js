@@ -1,10 +1,12 @@
-searchButton = document.getElementById("search-button");
+searchButton1 = document.getElementById("search-button-1");
+searchButton2 = document.getElementById("search-button-2");
 resultsContainer = document.getElementById("pokeResults");
 currentSelect = document.getElementById("pokeSelect");
 selectGeneration = document.getElementById("generation-search");
 selectType = document.getElementById("type-search");
 cardsOnPage = document.getElementsByClassName("resultsImage");
-nameSearch = document.getElementById("name-input");
+nameSearch1 = document.getElementById("name-input-1");
+nameSearch2 = document.getElementById("name-input-2");
 
 //Instantiate View Card Modal
 var modal = document.getElementById("myModal");
@@ -352,11 +354,24 @@ function startPageSearch(){
 }
 
 // Button click event that passes input info
-searchButton.addEventListener("click", function(){
+searchButton1.addEventListener("click", function(){
 
     parameterType = selectType.value;
     parameterGeneration = selectGeneration.value;
-    searchedName = nameSearch.value;
+    searchedName = nameSearch1.value;
+    searchedName = searchedName.toLowerCase()
+
+    console.log("Type: "+parameterType +"  Generation: "+parameterGeneration);
+    searchingPokeData(parameterGeneration, parameterType, searchedName);
+
+    resultsContainer.innerHTML = ""
+})
+
+searchButton2.addEventListener("click", function(){
+
+    parameterType = selectType.value;
+    parameterGeneration = selectGeneration.value;
+    searchedName = nameSearch2.value;
     searchedName = searchedName.toLowerCase()
 
     console.log("Type: "+parameterType +"  Generation: "+parameterGeneration);
