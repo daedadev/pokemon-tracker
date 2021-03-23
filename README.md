@@ -1,32 +1,27 @@
 # team-project
 
-Overwatch Game Stat + Achievement Tracker
+Pokemon Card Collector and Price Checker
 
-* Use a CSS framework other than Bootstrap.
-- Bulma/Tailwind
+This project was designed to help users search the pokemon card database using specific search criteria based on the pokemons generation, type, and name.
+After searchig, users will be able to compare te prices of different cards across several marketplaces, and save their preferred cards to return to later. This project was challenging, but interesting and gave us an opportunity to better understand APIs and their deployment, as well as hone our skills in HTML and CSS.
 
-* Be deployed to GitHub Pages.
-- ok
+The CSS framework we used was Materialize CSS
 
-* Be interactive (i.e., accept and respond to user input).
-- Clickable buttons to toggle/display different information
+*It has been deployed to GitHub Pages.
 
-* Use at least two server-side APIs.
+Pur project is interactive, and uses search bars, drop down menus, and buttons,
+and our UI is polished and responsive
+
+* We have used two server-side APIs.
 - TCG API and Poke API
 - https://pokemontcg.io/
 - https://pokeapi.co/
 
-* Does not use alerts, confirms, or prompts (use modals).
-- Modal
+* We have used modals, as apposed to alerts, confirms, or prompts.
 
-* Use client-side storage to store persistent data.
-- Save cards
+* We have saved our cards using client-side storage and store persistent data.
 
-* Be responsive.
-
-* Have a polished UI.
-
-* Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
+* We have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
 
 * Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
