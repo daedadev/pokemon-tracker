@@ -9,15 +9,21 @@
 .nav-wrapper{
     background-image: url(images/banner.jpg);
     font-family: pokeFont;
- assets
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-}
+
+    text-shadow: 4px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    
 
 }
+
 
 button{
+    margin-top: 5px;
+    margin-right: 5px;
     padding: 0px;
     background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    border-width: 0px;
+    display: always;
 }
 
 .sidenav{
@@ -26,18 +32,11 @@ button{
     color:black;
 }
 
-#sidenav-style{
-    
-}
-
-label{
-    font-size: 28px;
-    color: yellow;
-    
-}
 input{
     text-align: center;
     color: black;
+    font-size: 28px;
+
 }
 
 body {
@@ -98,6 +97,7 @@ body {
     background-color: lightgray;
     border: solid, black;
     border-radius: 2%;
+
 }
 
 #generation-search:hover{
@@ -111,6 +111,22 @@ body {
 #search-button:hover{
     background-color: dimgray;
 }
+
+
+}
+
+#generation-search:hover{
+    background-color: dimgray;
+}
+
+#type-search:hover{
+    background-color: dimgray;
+}
+
+#search-button:hover{
+    background-color: dimgray;
+}
+
 
 .col-sm-8:hover{
     background-color: dimgray;
@@ -182,6 +198,7 @@ body {
   padding: 10px;
   height: 300px;
 }
+
   
   /* The Close Button */
   .close {
@@ -197,3 +214,46 @@ body {
     text-decoration: none;
     cursor: pointer;
   }
+
+  img:hover{
+    box-shadow: 0 0 4px 4px rgba(179, 17, 17, 0.5)
+  }
+
+  .top-search{
+      display:none;
+      background-color: teal;
+  }
+
+  .input-field label {
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .input-field input[type=text]{
+    color: #000;
+    font-size: 20px;
+    font-weight: bolder;
+  }
+
+ 
+  @media screen and (max-width: 993px){
+      .modal{
+          height: 75%;
+          width: 75%;
+          font-size: 55%;
+      }
+      #collections-modal{
+        /* height: max-content;
+        width: max-content; */
+        left: 0px;
+      }
+      .top-search{
+        display: flex;
+        width: 100%;
+        background-image: url(images/pokedexflip.jpg);
+                        
+    }
+    
+  }
+ 

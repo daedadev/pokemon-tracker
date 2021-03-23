@@ -10,22 +10,66 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="style.css">
     </head>
-    
+
+
+    <div class="navbar-fixed">
       <nav>
+        
         <div class="nav-wrapper">
-        assets
-          <h2 class="yellow-text brand-logo center">Poke Card Collector</h2>
+
+        
+        <a href="https://github.com/wron1/team-project" target="_blank" class="brand-logo center yellow-text">PokeCardCollector</a>
+
 
           <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-            <li><button id="show-saved"><img src="images/Pcard.jpg" alt=""></button></li>
+            <li><button id="show-saved-1"><img src="images/Pcard.jpg" alt=""></button></li>
 
 
           </ul>
         </div>
+      
       </nav>
-    
+    </div>
     <body>
+
+      <div class="top-search">
+        <div class="row">
+          <div class="input-field col s12">
+        <label for="current-search">Pokemon Name</label>
+        <input type="text" id="name-input" name="current-search">
+      </div>
+        <h5>Generation</h5>
+        <select class="browser-default" id="generation-search">
+          <option value="" >Choose your option</option>
+          <option value="generation/1">1</option>
+          <option value="generation/2">2</option>
+          <option value="generation/3">3</option>
+          <option value="generation/4">4</option>
+          <option value="generation/5">5</option>
+          <option value="generation/6">6</option>
+          <option value="generation/7">7</option>
+        </select>
+
+        <h5>Pokemon Type</h5>
+        <select class="browser-default" id="type-search">
+          <option value="" >Choose your option</option>
+          <option value="Grass">Grass</option>
+          <option value="Fire">Fire</option>
+          <option value="Water">Water</option>
+          <option value="Lightning">Lightning</option>
+          <option value="Psychic">Psychic</option>
+          <option value="Fighting">Fighting</option>
+          <option value="Darkness">Darkness</option>
+          <option value="Metal">Metal</option>
+          <option value="Dragon">Dragon</option>
+          <option value="Fairy">Fairy</option>
+          <option value="Colorless">Colorless</option>
+        </select>
+        <button id="search-button">search</button>
+        <button id="show-saved-2"><img src="images/Pcard.jpg" alt=""></button> 
+      </div>
+    </div>
         <div class="row">
             
             <div class="col s12 m4 l3">
@@ -34,7 +78,7 @@
               <ul id="slide-out" class="sidenav sidenav-fixed">
                 <br></br><br></br><br></br><br></br>
                 <h3>Search for Pokemon cards by name , type, or generation.</h3>
-                <div class="input-field col s12" id="sidenav-style">
+                <div class="input-field col s12">
                     <label for="current-search">Pokemon Name</label>
                     <input type="text" id="name-input" name="current-search">
                     
@@ -70,7 +114,7 @@
                   </div>
     
               </ul>
-              <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              
             </div>
       
             <div class="col s12 m8 l9">
@@ -94,7 +138,8 @@
             <h4 id="modal-card-name"></h4> <h2 id="modal-card-type"></h2>
             
 <table class ="responsive-table highlight">
-        
+  
+  
     <tbody>
       <tr>
         <td>Holofoil Market Price</td>
@@ -112,12 +157,9 @@
       </tr>
     </tbody>
   </table>
-         
+  
     <img class="responsive-img" src="" alt="" id="modal-card-image">
-              
-           
-
-       
+                    
 
        <button id="card-saver" > <img class="responsive-img" src=images/Pball.jpg></button>
 

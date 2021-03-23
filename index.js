@@ -25,7 +25,9 @@ var collectionsDisplayClose = document.getElementsByClassName("close")[1];
 var collectionsModal = document.getElementById("collections-modal");
 var collectionResults = document.getElementById("collection-results");
 
-var savedCardsBtn = document.getElementById("show-saved");
+var savedCardsBtn1 = document.getElementById("show-saved-1");
+var savedCardsBtn2 = document.getElementById("show-saved-2");
+
 
 // Saved Cards Array
 var collectedCards = [];
@@ -35,7 +37,7 @@ var savedCollectedCards = localStorage.getItem("ItemID");
 
 if(savedCollectedCards !== null){
 
-    collectedCards = JSON.parse(savedCollectedCards);
+    // collectedCards = JSON.parse(savedCollectedCards);
 
 }
 
@@ -339,6 +341,7 @@ function startPageSearch(){
     parameterType = urlParams.get('type');
     parameterGeneration = urlParams.get('generation');
     searchedName = urlParams.get('name');
+    console.log(searchedName)
     searchedName = searchedName.toLowerCase()
 
     console.log("Type: "+parameterType +"  Generation: "+parameterGeneration);
@@ -372,8 +375,17 @@ cardSaveBtn.addEventListener("click", function(){
 })
 
 // Handle Collections Modal
-savedCardsBtn.addEventListener("click", function(){
+savedCardsBtn1.addEventListener("click", function(e){
+    console.log(e)
+    collectionsModal.style.display = "block";
+    getSavedCards(collectedCards);
+    console.log(collectedCards);
 
+
+});
+
+savedCardsBtn2.addEventListener("click", function(e){
+    console.log(e)
     collectionsModal.style.display = "block";
     getSavedCards(collectedCards);
     console.log(collectedCards);
