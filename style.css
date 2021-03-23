@@ -9,11 +9,19 @@
 .nav-wrapper{
     background-image: url(images/banner.jpg);
     font-family: pokeFont;
+    text-shadow: 4px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    
 }
 
+
 button{
+    margin-top: 5px;
+    margin-right: 5px;
     padding: 0px;
     background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    border-width: 0px;
+    display: always;
 }
 
 .sidenav{
@@ -22,18 +30,10 @@ button{
     color:black;
 }
 
-#sidenav-style{
-    
-}
-
-label{
-    font-size: 28px;
-    color: yellow;
-    
-}
 input{
     text-align: center;
-    color: yellow;
+    color: black;
+    font-size: 28px;
 }
 
 body {
@@ -66,12 +66,14 @@ body {
 
 .col-sm-8{
     width: 25%;
+    background-color: lightgray;
+    border-radius: 10%;
 }
 
 #generation-search{
     width: auto;
     height:auto;
-    background-color: whitesmoke;
+    background-color:lightgray;
     border: solid, black;
     border-radius: 2px;
     color: black;
@@ -80,20 +82,35 @@ body {
 #type-search{
     width: auto;
     height:auto;
-    background-color: whitesmoke;
+    background-color: lightgray;
     border: solid, black;
     border-radius: 2px;
     color: black;
 }
 
-#searchButton{
+#search-button{
     width: 75px;
     height:auto;
-    background-color: rgb(39, 18, 99);
+    background-color: lightgray;
     border: solid, black;
-    border-radius: 2px;  
+    border-radius: 2%;
 }
 
+#generation-search:hover{
+    background-color: dimgray;
+}
+
+#type-search:hover{
+    background-color: dimgray;
+}
+
+#search-button:hover{
+    background-color: dimgray;
+}
+
+.col-sm-8:hover{
+    background-color: dimgray;
+}
 
 /* The Modal (background) */
 .modal {
@@ -118,6 +135,7 @@ body {
     border: 1px solid #888;
     width: fit-content;
     height: fit-content;
+
   }
 
   #collections-modal{      
@@ -126,6 +144,8 @@ body {
       top: 125px;
       width: 50%;
   }
+
+
 
 
   #collections-modal .modal-content{
@@ -158,6 +178,7 @@ body {
   padding: 10px;
   height: 300px;
 }
+
   
   /* The Close Button */
   .close {
@@ -173,3 +194,46 @@ body {
     text-decoration: none;
     cursor: pointer;
   }
+
+  img:hover{
+    box-shadow: 0 0 4px 4px rgba(179, 17, 17, 0.5)
+  }
+
+  .top-search{
+      display:none;
+      background-color: teal;
+  }
+
+  .input-field label {
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .input-field input[type=text]{
+    color: #000;
+    font-size: 20px;
+    font-weight: bolder;
+  }
+
+ 
+  @media screen and (max-width: 993px){
+      .modal{
+          height: 75%;
+          width: 75%;
+          font-size: 55%;
+      }
+      #collections-modal{
+        /* height: max-content;
+        width: max-content; */
+        left: 0px;
+      }
+      .top-search{
+        display: flex;
+        width: 100%;
+        background-image: url(images/pokedexflip.jpg);
+                        
+    }
+    
+  }
+ 
